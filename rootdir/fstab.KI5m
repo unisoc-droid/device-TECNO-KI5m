@@ -1,0 +1,8 @@
+# V218 slot-A logical partitions with the V218 chained vbmeta groups (Option A).
+system /system erofs ro wait,avb=vbmeta_system,logical,first_stage_mount,slotselect
+system_ext /system_ext erofs ro wait,avb=vbmeta_system_ext,logical,first_stage_mount,slotselect
+vendor /vendor erofs ro wait,avb=vbmeta_vendor,logical,first_stage_mount,slotselect
+product /product erofs ro wait,avb=vbmeta_product,logical,first_stage_mount,slotselect
+vendor_dlkm /vendor_dlkm ext4 noatime,ro,errors=panic wait,avb=vbmeta_vendor,logical,first_stage_mount,slotselect
+/dev/block/by-name/metadata /metadata ext4 nodev,noatime,nosuid,errors=panic wait,formattable,first_stage_mount,check
+/dev/block/by-name/misc /misc emmc defaults defaults

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <extend-project name="LineageOS/android_build" path="build/make" revision="f3bb11d8739b84a311a40a3069dc4cfca688be22" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="LineageOS/android_system_core" path="system/core" revision="c0500ffe2cc283d61f1e3db1b2c979bfbd9beb8c" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="LineageOS/android_vendor_lineage" path="vendor/lineage" revision="e855b46998626f60c437e3db091f009ba6ec4252" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="LineageOS/android_hardware_interfaces" path="hardware/interfaces" revision="91fa300c9e17925cd9e6a422f2590eb475d695a0" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="LineageOS/android_system_sepolicy" path="system/sepolicy" revision="60f5720f939213f8e20ec4eaab49d5348576c70d" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="LineageOS/android_system_tools_mkbootimg" path="system/tools/mkbootimg" revision="40a19c4c5ffe8b86c6c61318c8aa4ffe35d6e7ad" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="LineageOS/android_system_libufdt" path="system/libufdt" revision="6f4879f0df2a4b1f277bdd8475318be5ad0723a6" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="LineageOS/android_external_avb" path="external/avb" revision="fcf79925eb230fd8b773bec492659025b3a3d1da" upstream="refs/heads/lineage-20.0" />
+  <extend-project name="platform/system/libvintf" path="system/libvintf" revision="634699fb4bd630ae716363929bd3fe28d92e755f" upstream="refs/tags/android-13.0.0_r75" />
+  <extend-project name="platform/prebuilts/vndk/v31" path="prebuilts/vndk/v31" revision="7dceebed1660eb56ecbb21187bed0d44494262c9" upstream="refs/tags/android-13.0.0_r75" />
+</manifest>
