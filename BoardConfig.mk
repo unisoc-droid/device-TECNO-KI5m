@@ -17,7 +17,11 @@ BOARD_VNDK_VERSION := current
 # a dependency in lineage.dependencies and is synced to the same path on every
 # build server.
 TARGET_KERNEL_SOURCE := kernel/tecno/TECNO-KI5m
-TARGET_KERNEL_CONFIG := gki_defconfig ki5m_early.config
+TARGET_KERNEL_CONFIG := gki_defconfig ki5m_early.config ki5m_soc.config ki5m_device.config
+# BSP_BUILD_KI5M=y selects the in-tree KI5m DTS (ums9230-ki5m-base.dtb and
+# ums9230-ki5m-overlay.dtbo) in arch/arm64/boot/dts/sprd/Makefile. Without it
+# the kernel "dtbs" target builds no KI5m device trees.
+TARGET_KERNEL_ADDITIONAL_FLAGS := BSP_BUILD_KI5M=y
 TARGET_KERNEL_VERSION := 5.15
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 4
@@ -42,6 +46,11 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_CUSTOM_DTBIMG_MK := $(KI5M_DEVICE_PATH)/dtb.mk
 BOARD_CUSTOM_DTBOIMG_MK := $(KI5M_DEVICE_PATH)/dtbo.mk
+# The KI5m kernel has no "dtbo.img" aggregate target; both dtb.mk and dtbo.mk
+# invoke the kernel "dtbs" target, which builds ums9230-ki5m-base.dtb and
+# ums9230-ki5m-overlay.dtbo (both are listed in dtb-y).
+TARGET_KERNEL_DTB := dtbs
+TARGET_KERNEL_DTBO := dtbs
 
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true

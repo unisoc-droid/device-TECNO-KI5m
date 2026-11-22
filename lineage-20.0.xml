@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Local manifest for TECNO KI5m (UMS9230/qogirl6) on LineageOS 20.0.
+
+  Symlink this file into the LineageOS tree so `repo sync` pulls the device,
+  vendor and kernel trees from the canonical unisoc-droid organisation:
+
+      ln -s ../../device/tecno/TECNO-KI5m/lineage-20.0.xml \
+          .repo/local_manifests/ki5m.xml
+-->
+<manifest>
+  <remote name="unisoc" fetch="https://github.com/unisoc-droid" />
+
+  <project path="device/tecno/TECNO-KI5m" name="unisoc-droid/device-TECNO-KI5m" remote="unisoc" revision="lineage-20.0" />
+  <project path="vendor/tecno/TECNO-KI5m" name="unisoc-droid/vendor-TECNO-KI5m" remote="unisoc" revision="lineage-20.0" />
+  <project path="kernel/tecno/TECNO-KI5m" name="unisoc-droid/kernel-TECNO-KI5m" remote="unisoc" revision="lineage-20.0" />
+</manifest>
