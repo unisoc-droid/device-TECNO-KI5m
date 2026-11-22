@@ -1,0 +1,12 @@
+[
+  {
+    "repository": "unisoc-droid/vendor-TECNO-KI5m",
+    "target_path": "vendor/tecno/TECNO-KI5m",
+    "branch": "lineage-20.0"
+  },
+  {
+    "repository": "unisoc-droid/kernel-TECNO-KI5m",
+    "target_path": "kernel/tecno/TECNO-KI5m",
+    "branch": "lineage-20.0"
+  }
+]

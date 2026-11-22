@@ -1,4 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+$(call inherit-product, vendor/tecno/TECNO-KI5m/TECNO-KI5m-vendor.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_EXTRA_VNDK_VERSIONS += 31
