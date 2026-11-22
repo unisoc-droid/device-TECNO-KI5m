@@ -20,19 +20,12 @@ the intentional differences from a generated tree.
 `lineage.dependencies` plus `lineage-20.0.xml` (local manifest) declare all
 three. No post-checkout symlink or build-file edit is required.
 
-## One-time provisioning before the first build
+## Vendor blobs
 
-Proprietary blobs are not committed. After `repo sync`, run once:
-
-```bash
-cd vendor/tecno/TECNO-KI5m
-./extract-files.sh /path/to/stock/vendor.img
-cd ../../..
-```
-
-This populates `proprietary/` and refreshes the generated makefiles. `device.mk`
-fails with an explicit message if this step was skipped. The stock image is
-never needed for routine builds once blobs are provisioned.
+`vendor/tecno/TECNO-KI5m/proprietary/` is tracked (351 files, ~76 MiB), following
+the Redmi A5 / POCO C71 (`serenity`) convention. No extraction or provisioning
+is needed after `repo sync`. The raw stock `vendor.img` is never committed and
+is not required for routine builds.
 
 ## Routine build (owner, dedicated server)
 

@@ -1,20 +1,16 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
-# Vendor integration. Proprietary blobs are not redistributable, so they are
-# provisioned once (see vendor/tecno/TECNO-KI5m/README.md). Fail with an
-# actionable message instead of silently building an incomplete vendor image.
+# Vendor blobs are tracked in vendor/tecno/TECNO-KI5m/proprietary/ (serenity
+# convention), so a clean checkout needs no extraction step. The optional
+# prebuilt-image fallback remains available for bring-up only.
 KI5M_VENDOR_PATH := vendor/tecno/TECNO-KI5m
-KI5M_VENDOR_BLOB := $(KI5M_VENDOR_PATH)/proprietary/vendor/bin/adbtestmode
 KI5M_VENDOR_IMAGE := $(KI5M_VENDOR_PATH)/prebuilt/vendor.img
 
 ifeq ($(KI5M_USE_PREBUILT_VENDORIMAGE),true)
   ifeq ($(wildcard $(KI5M_VENDOR_IMAGE)),)
-    $(error KI5m: KI5M_USE_PREBUILT_VENDORIMAGE=true but $(KI5M_VENDOR_IMAGE) is missing. Stage the verified V218 image or unset the flag.)
+    $(error KI5m: KI5M_USE_PREBUILT_VENDORIMAGE=true but $(KI5M_VENDOR_IMAGE) is missing. Unset the flag to use the tracked blobs.)
   endif
 else
-  ifeq ($(wildcard $(KI5M_VENDOR_BLOB)),)
-    $(error KI5m: proprietary blobs are not provisioned. Run once from the ROM root: cd $(KI5M_VENDOR_PATH) && ./extract-files.sh /path/to/stock/vendor.img (or pre-extracted vendor dump), then retry lunch/mka.)
-  endif
   $(call inherit-product, $(KI5M_VENDOR_PATH)/TECNO-KI5m-vendor.mk)
 endif
 
@@ -42,8 +38,7 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock
 
 # Not added on purpose: android.hardware.boot@1.2 and health@2.1 HALs are
-# provided by the OEM blobs / prebuilt V218 vendor filesystem.
-# checkpoint_gc is absent from stock vendor.
+# provided by the tracked OEM blobs. checkpoint_gc is absent from stock.
 
 PRODUCT_COPY_FILES += \
     device/tecno/TECNO-KI5m/rootdir/fstab.KI5m:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.KI5m \

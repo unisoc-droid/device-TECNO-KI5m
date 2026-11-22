@@ -97,19 +97,13 @@ konfigurasi ROM KI5m.
    Simpan sebagai `.repo/local_manifests/ki5m.xml`, lalu `repo sync` untuk
    tiga path tersebut.
 
-2. Provision blob OEM **sekali** (tidak di-commit karena hak redistribusi):
-
-   ```sh
-   cd vendor/tecno/TECNO-KI5m
-   ./extract-files.sh /path/to/stock/vendor.img
-   cd ../../..
-   ```
-
-   Verifikasi image stock: SHA-256
-   `fed3cf42811d3ddde84d558e1abb916e292cac4d56e8bd9beb1b69947ffb7207`
-   (841748480 bytes, EROFS). Jangan pakai image V133. Fallback opsional:
-   stage image di `prebuilt/vendor.img` lalu build dengan
-   `KI5M_USE_PREBUILT_VENDORIMAGE=true`.
+2. Blob OEM sudah **di-track** di `vendor/tecno/TECNO-KI5m/proprietary/`
+   (351 file, ~76 MiB), mengikuti konvensi vendor tree Redmi A5 / POCO C71
+   (`serenity`). Tidak ada ekstraksi atau provisioning di server. Script
+   `extract-files.sh` tetap ada hanya untuk regenerasi/audit dari firmware
+   stock berlisensi (SHA-256
+   `fed3cf42811d3ddde84d558e1abb916e292cac4d56e8bd9beb1b69947ffb7207`).
+   Image mentah tidak di-commit dan tidak dipakai dalam build normal.
 
 3. Dari root ROM (tiga perintah standar):
 
@@ -119,8 +113,8 @@ konfigurasi ROM KI5m.
    mka bacon
    ```
 
-   Tidak ada export tambahan, ekstraksi manual, atau patch build file setelah
-   provisioning. `device.mk` gagal dengan pesan jelas bila provisioning dilewat.
+   Tidak ada export tambahan, ekstraksi manual, atau patch build file sama
+   sekali setelah checkout.
 
    `lineage.dependencies` sudah berisi vendor + kernel, sehingga roomservice
    tidak perlu entri manual untuk keduanya.
