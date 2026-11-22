@@ -16,7 +16,7 @@ Standard LineageOS device tree for TECNO KI5m (UMS9230, Android 13 / 5.15).
 
 - `vendor/tecno/TECNO-KI5m/prebuilt/vendor.img` — stock V218 vendor image
   (803 MB, above GitHub's per-file limit). Stage it on the server.
-- Kernel source is built from `gki_defconfig` + `ki5m_early.fragment`; no
+- Kernel source is built from `gki_defconfig` + `ki5m_early.config`; no
   prebuilt kernel image or kernel-dist directory is required.
 
 ## Configuration

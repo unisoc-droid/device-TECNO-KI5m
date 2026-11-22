@@ -17,7 +17,7 @@ BOARD_VNDK_VERSION := current
 # a dependency in lineage.dependencies and is synced to the same path on every
 # build server.
 TARGET_KERNEL_SOURCE := kernel/tecno/TECNO-KI5m
-TARGET_KERNEL_CONFIG := gki_defconfig ki5m_early.fragment
+TARGET_KERNEL_CONFIG := gki_defconfig ki5m_early.config
 TARGET_KERNEL_VERSION := 5.15
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 4
@@ -46,6 +46,11 @@ BOARD_CUSTOM_DTBOIMG_MK := $(KI5M_DEVICE_PATH)/dtbo.mk
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 TARGET_RECOVERY_FSTAB := $(KI5M_DEVICE_PATH)/rootdir/fstab.KI5m
+# Stock V218 vendor.prop: ro.minui.pixel_format=RGBX_8888.
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+# Stock fstab: metadata/cache/vendor_dlkm are ext4, userdata is f2fs.
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
@@ -69,6 +74,13 @@ AB_OTA_PARTITIONS := boot vendor_boot dtbo system system_ext vendor product vend
 # The local build/make rules are extended for these two groups; Option B fallback
 # only needs this block and rootdir/fstab.KI5m reverted to the merged system group.
 BOARD_AVB_ENABLE := true
+# DEBUG BRING-UP: flags 3 disables AVB verification and dm-verity hashtrees in
+# the top-level vbmeta. Set to false once the stock key/rollback contract is
+# proven; this does not change the Option A chained-vbmeta layout.
+KI5M_AVB_DISABLE_VERIFICATION ?= true
+ifeq ($(KI5M_AVB_DISABLE_VERIFICATION),true)
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+endif
 KI5M_AVB_CHAIN_KEY := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := $(KI5M_AVB_CHAIN_KEY)
