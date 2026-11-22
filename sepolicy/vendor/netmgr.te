@@ -1,0 +1,25 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type netmgr, domain, netdomain;
+type netmgr_exec, exec_type, file_type, vendor_file_type;
+
+allow netmgr ctl_default_prop:file { read getattr map open };
+allow netmgr ctl_default_prop:property_service set;
+allow netmgr execns:fd use;
+allow netmgr execns:process sigchld;
+allow netmgr hostapd_data_file:dir { ioctl read write getattr lock open watch watch_reads add_name remove_name search };
+allow netmgr hostapd_data_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow netmgr init:unix_stream_socket connectto;
+allow netmgr netmgr_exec:file { read getattr map execute open entrypoint };
+allow netmgr proc_net:file { read getattr open };
+allow netmgr property_socket:sock_file write;
+allow netmgr self:capability { net_admin net_raw };
+allow netmgr self:packet_socket { ioctl getopt };
+allow netmgr self:packet_socket { read write create bind setopt };
+allow netmgr self:socket { ioctl create };
+allow netmgr self:udp_socket ioctl;
+allowxperm netmgr self:packet_socket ioctl { 0x8927 0x8933 };
+allowxperm netmgr self:socket ioctl { 0x8946 };
+allowxperm netmgr self:udp_socket ioctl { 0x8916 0x891a 0x891c };

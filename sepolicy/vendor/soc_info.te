@@ -1,0 +1,14 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type soc_info, domain;
+type soc_info_exec, exec_type, file_type, vendor_file_type;
+
+allow soc_info init:unix_stream_socket connectto;
+allow soc_info property_socket:sock_file write;
+allow soc_info soc_info_exec:file { read getattr map execute open entrypoint };
+allow soc_info sysfs_manufacturer:file { read getattr open };
+allow soc_info sysfs_model:file { read getattr open };
+allow soc_info vendor_soc_prop:file { read getattr map open };
+allow soc_info vendor_soc_prop:property_service set;

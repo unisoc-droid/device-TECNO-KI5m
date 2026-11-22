@@ -1,0 +1,24 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type refnotify, domain;
+type refnotify_device, dev_type;
+type refnotify_exec, exec_type, file_type, vendor_file_type;
+
+allow refnotify bm_device:chr_file { ioctl read write open };
+allow refnotify init:unix_stream_socket connectto;
+allow refnotify powerctl_prop:property_service set;
+allow refnotify property_socket:sock_file write;
+allow refnotify refnotify:netlink_kobject_uevent_socket { read create bind getopt setopt };
+allow refnotify refnotify_device:chr_file { ioctl read write open };
+allow refnotify refnotify_exec:file { read getattr map execute open entrypoint };
+allow refnotify rtc_device:chr_file { read write };
+allow refnotify self:capability sys_time;
+allow refnotify self:capability { setgid setuid };
+allow refnotify spipe_device:chr_file { ioctl read write open };
+allow refnotify sprd_time_sync_device:chr_file { read open };
+allow refnotify sysfs:file { read write open };
+allow refnotify sysfs_iq:file { read open };
+allow refnotify vendor_radio_noril_prop:file { read getattr map open };
+allow refnotify vendor_radio_prop:file { read getattr map open };

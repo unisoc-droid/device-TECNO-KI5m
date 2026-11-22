@@ -1,0 +1,23 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_xtensa_default, domain, hal_allocator_client, hal_neuralnetworks, hal_neuralnetworks_server, halclientdomain, halserverdomain;
+type hal_xtensa_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_xtensa_default dev_vdsp:chr_file { ioctl read write map open };
+allow hal_xtensa_default device:chr_file ioctl;
+allow hal_xtensa_default device:dir { ioctl read write getattr lock open watch watch_reads add_name remove_name search };
+allow hal_xtensa_default hal_neuralnetworks_hwservice:hwservice_manager add;
+allow hal_xtensa_default hal_xtensa_default_exec:file { read getattr map execute open entrypoint };
+allow hal_xtensa_default hidl_base_hwservice:hwservice_manager add;
+allow hal_xtensa_default hwservicemanager:binder { call transfer };
+allow hal_xtensa_default hwservicemanager_prop:file { read getattr map open };
+allow hal_xtensa_default ion_device:chr_file { ioctl read write open };
+allow hal_xtensa_default prod_file:dir search;
+allow hal_xtensa_default sensorhub_data_file:dir search;
+allow hal_xtensa_default vdspserver:binder { call transfer };
+allow hal_xtensa_default vendor_xtensa_prop:file { read getattr map open };
+allow hal_xtensa_default vndbinder_device:chr_file { ioctl read write map open };
+allow hal_xtensa_default vndservicemanager:binder { call transfer };
+allow hal_xtensa_default xtensa_device:chr_file { ioctl read write map open };

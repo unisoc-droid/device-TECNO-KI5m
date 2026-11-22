@@ -1,35 +1,60 @@
 # device/tecno/TECNO-KI5m — LineageOS 20
 
-Standard LineageOS device tree for TECNO KI5m (UMS9230, Android 13 / 5.15).
+Standard LineageOS 20 device tree for TECNO KI5m (UMS9230 / T606 / qogirl6,
+Android 13 / API 33, android13-5.15 kernel).
 
-See [BUILD_GUIDE.md](BUILD_GUIDE.md) for the `aospdtgen`/`dumpyara`
-mainstream-tree reference, the server build steps, and a map of every
-intentional difference from the generated tree.
+Verified product: `lineage_ki5m` (`PRODUCT_DEVICE := TECNO-KI5m`).
+Verified lunch target: `lineage_ki5m-userdebug`.
 
-## Repositories
+See [BUILD_GUIDE.md](BUILD_GUIDE.md) for the aospdtgen/dumpyara reference and
+the intentional differences from a generated tree.
 
-| Path | Repository | Branch |
-|---|---|---|
-| `device/tecno/TECNO-KI5m` | `unisoc-droid/device-TECNO-KI5m` | `lineage-20.0` |
-| `vendor/tecno/TECNO-KI5m` | `unisoc-droid/vendor-TECNO-KI5m` | `lineage-20.0` |
-| `kernel/tecno/TECNO-KI5m` | `unisoc-droid/kernel-TECNO-KI5m` | `lineage-20.0` |
+## Repositories (branch `lineage-20.0`)
 
-`lineage.dependencies` declares the vendor and kernel trees for `repo sync`.
+| Path | Repository |
+|---|---|
+| `device/tecno/TECNO-KI5m` | `unisoc-droid/device-TECNO-KI5m` |
+| `vendor/tecno/TECNO-KI5m` | `unisoc-droid/vendor-TECNO-KI5m` |
+| `kernel/tecno/TECNO-KI5m` | `unisoc-droid/kernel-TECNO-KI5m` |
 
-## Build inputs that are not committed
+`lineage.dependencies` plus `lineage-20.0.xml` (local manifest) declare all
+three. No post-checkout symlink or build-file edit is required.
 
-- `vendor/tecno/TECNO-KI5m/prebuilt/vendor.img` — stock V218 vendor image
-  (803 MB, above GitHub's per-file limit). Stage it on the server.
-- Kernel source is built from `gki_defconfig` + `ki5m_early.config`; no
-  prebuilt kernel image or kernel-dist directory is required.
+## One-time provisioning before the first build
 
-## Configuration
+Proprietary blobs are not committed. After `repo sync`, run once:
 
-- AVB Option A: `system`, `system_ext`, `product` and `vendor/vendor_dlkm` keep
-  the V218 chained-vbmeta layout. Option B remains a config-only fallback.
-- First test build: `KI5M_DEBUG_PERMISSIVE ?= true` adds
-  `androidboot.selinux=permissive` and `KI5M_AVB_DISABLE_VERIFICATION ?= true`
-  adds top-level vbmeta `--flags 3`. Set both to `false` for production.
+```bash
+cd vendor/tecno/TECNO-KI5m
+./extract-files.sh /path/to/stock/vendor.img
+cd ../../..
+```
+
+This populates `proprietary/` and refreshes the generated makefiles. `device.mk`
+fails with an explicit message if this step was skipped. The stock image is
+never needed for routine builds once blobs are provisioned.
+
+## Routine build (owner, dedicated server)
+
+```bash
+source build/envsetup.sh
+lunch lineage_ki5m-userdebug
+mka bacon
+```
+
+No extra exports, manual extraction or patching is needed after provisioning.
+
+## Configuration notes
+
+- Kernel built from source: `gki_defconfig` + `ki5m_early.config` +
+  `ki5m_soc.config` + `ki5m_device.config`; `BSP_BUILD_KI5M=y` selects the
+  in-tree KI5m DTS/DTBO, built by `dtb.mk` / `dtbo.mk`.
+- AVB Option A: chained `vbmeta_system_ext` / `vbmeta_product`, vendor merged.
+- Bring-up defaults `KI5M_DEBUG_PERMISSIVE ?= true` and
+  `KI5M_AVB_DISABLE_VERIFICATION ?= true`; set both to `false` for production.
 - Early UART: `earlycon console=ttyS1,115200n8 loglevel=7`.
+- Vendor SELinux from stock V218 CIL: `BOARD_VENDOR_SEPOLICY_DIRS`. Property
+  names pass `check_prop_prefix.py --strict` with the shipping-API-33 allowed
+  prefixes; no `BUILD_BROKEN_*` namespace workaround is used.
 
 No build, device flash, or boot claim has been made from this tree.

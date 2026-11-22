@@ -1,0 +1,8 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+hal_attribute(tranlog)
+hal_attribute(tranlogconfig)
+hal_attribute(wired_se)
+attribute hwfeaturedomain;

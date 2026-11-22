@@ -1,0 +1,9 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type stflashtool, domain;
+type stflashtool_exec, exec_type, file_type, vendor_file_type;
+
+allow stflashtool nfc_device:chr_file { ioctl read write open };
+allow stflashtool stflashtool_exec:file { read getattr map execute open entrypoint };

@@ -1,0 +1,54 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type goldfish_setup, domain;
+type goldfish_setup_exec, exec_type, file_type, vendor_file_type;
+
+allow goldfish_setup createns:dir search;
+allow goldfish_setup createns:file read;
+allow goldfish_setup createns:lnk_file read;
+allow goldfish_setup createns:process transition;
+allow goldfish_setup createns:process { siginh rlimitinh };
+allow goldfish_setup createns_exec:file { read getattr map execute open };
+allow goldfish_setup ctl_default_prop:file { read getattr map open };
+allow goldfish_setup ctl_default_prop:property_service set;
+allow goldfish_setup execns_exec:file { ioctl read getattr lock map execute open watch watch_reads execute_no_trans };
+allow goldfish_setup goldfish_iw_exec:file execute_no_trans;
+allow goldfish_setup goldfish_setup_exec:file execute_no_trans;
+allow goldfish_setup goldfish_setup_exec:file { read getattr map execute open entrypoint };
+allow goldfish_setup hidl_manager_hwservice:hwservice_manager find;
+allow goldfish_setup hostapd_data_file:dir { ioctl read write getattr lock open watch watch_reads add_name remove_name search };
+allow goldfish_setup hostapd_data_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow goldfish_setup hwservicemanager:binder { call transfer };
+allow goldfish_setup hwservicemanager_prop:file { read getattr map open };
+allow goldfish_setup init:unix_stream_socket connectto;
+allow goldfish_setup kernel:system module_request;
+allow goldfish_setup nsfs:file { ioctl read getattr lock map open watch watch_reads };
+allow goldfish_setup proc:file { ioctl read getattr lock map open watch watch_reads };
+allow goldfish_setup proc_net:file { ioctl read write getattr lock append map open watch watch_reads };
+allow goldfish_setup property_socket:sock_file write;
+allow goldfish_setup self:cap2_userns block_suspend;
+allow goldfish_setup self:capability { chown fowner net_admin net_raw };
+allow goldfish_setup self:capability { sys_module sys_admin };
+allow goldfish_setup self:capability2 block_suspend;
+allow goldfish_setup self:netlink_generic_socket { read write create getattr setattr lock append map bind connect getopt setopt shutdown };
+allow goldfish_setup self:netlink_route_socket { read write create getattr bind setopt nlmsg_read nlmsg_write };
+allow goldfish_setup self:rawip_socket { create getopt setopt };
+allow goldfish_setup self:udp_socket { ioctl create };
+allow goldfish_setup sysfs:file { read open };
+allow goldfish_setup sysfs_wake_lock:file { ioctl read write getattr lock append map open watch watch_reads };
+allow goldfish_setup system_data_file:dir getattr;
+allow goldfish_setup system_suspend_hwservice:hwservice_manager find;
+allow goldfish_setup system_suspend_server:binder { call transfer };
+allow goldfish_setup system_suspend_server:fd use;
+allow goldfish_setup varrun_file:dir { read write mounton open add_name remove_name search };
+allow goldfish_setup varrun_file:file { read write create getattr unlink mounton open };
+allow goldfish_setup vendor_file:file execute_no_trans;
+allow goldfish_setup vendor_shell_exec:file { ioctl read getattr lock map execute open watch watch_reads execute_no_trans };
+allow goldfish_setup vendor_toolbox_exec:file execute_no_trans;
+allowxperm goldfish_setup self:udp_socket ioctl { 0x6900 0x6902 };
+allowxperm goldfish_setup self:udp_socket ioctl { 0x890b-0x890d 0x8911 0x8914 0x8916 0x8918 0x891a 0x891c-0x8920 0x8922-0x8927 0x8929 0x8930-0x8932 0x8934-0x8937 0x8939 0x8940-0x8941 0x8943 0x8946-0x894b 0x8953-0x8955 0x8960-0x8962 0x8970-0x8971 0x8980-0x8983 0x8990-0x8995 0x89a0-0x89a3 0x89b0 0x89e0-0x89ff };
+allowxperm goldfish_setup self:udp_socket ioctl { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 0x8b14-0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 0x8b2a-0x8b2c 0x8b30-0x8b36 0x8be0-0x8bff };
+dontaudit goldfish_setup createns:process noatsecure;
+type_transition goldfish_setup createns_exec:process createns;

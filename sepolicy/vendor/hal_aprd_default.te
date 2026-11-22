@@ -1,0 +1,25 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_aprd_default, domain;
+type hal_aprd_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_aprd_default gnss_file:dir { read open search };
+allow hal_aprd_default gnss_file:file { read getattr open };
+allow hal_aprd_default hal_aprd_default_exec:file { read getattr map execute open entrypoint };
+allow hal_aprd_default hal_aprd_hwservice:hwservice_manager { add find };
+allow hal_aprd_default hal_extRadio_hwservice:hwservice_manager { add find };
+allow hal_aprd_default hidl_base_hwservice:hwservice_manager add;
+allow hal_aprd_default hwservicemanager:binder { call transfer };
+allow hal_aprd_default hwservicemanager_prop:file { read getattr map open };
+allow hal_aprd_default modem_control:dir { read getattr open search };
+allow hal_aprd_default modem_control:file { read open };
+allow hal_aprd_default modem_control:lnk_file { read getattr };
+allow hal_aprd_default modem_control:unix_stream_socket { read write connectto };
+allow hal_aprd_default rild:binder call;
+allow hal_aprd_default vendor_radio_prop:file { read getattr map open };
+allow hal_aprd_default wcnd:dir { read getattr open search };
+allow hal_aprd_default wcnd:file { read open };
+allow hal_aprd_default wcnd:lnk_file { read getattr };
+allow hal_aprd_default wcnd:unix_stream_socket connectto;

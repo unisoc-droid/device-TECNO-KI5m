@@ -1,0 +1,13 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type createns, domain;
+type createns_exec, exec_type, file_type, vendor_file_type;
+
+allow createns createns_exec:file { read getattr map execute open entrypoint };
+allow createns goldfish_setup:fd use;
+allow createns goldfish_setup:process sigchld;
+allow createns self:capability { setgid setuid net_raw sys_admin };
+allow createns varrun_file:dir { write add_name search };
+allow createns varrun_file:file { read write create mounton open };

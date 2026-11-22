@@ -1,0 +1,49 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type sprd_sgps_app, appdomain, domain;
+type sprd_sgps_app_tmpfs, file_type;
+type sprd_sgps_app_userfaultfd;
+
+allow sprd_sgps_app accessibility_service:service_manager find;
+allow sprd_sgps_app activity_service:service_manager find;
+allow sprd_sgps_app activity_task_service:service_manager find;
+allow sprd_sgps_app app_api_service:service_manager find;
+allow sprd_sgps_app app_data_file:dir { read write create getattr setattr open add_name remove_name search };
+allow sprd_sgps_app app_data_file:file { read write create getattr setattr append map unlink rename open };
+allow sprd_sgps_app appdomain_tmpfs:file { read write getattr map execute };
+allow sprd_sgps_app audio_service:service_manager find;
+allow sprd_sgps_app autofill_service:service_manager find;
+allow sprd_sgps_app cgroup:file write;
+allow sprd_sgps_app clipboard_service:service_manager find;
+allow sprd_sgps_app connectivity_service:service_manager find;
+allow sprd_sgps_app content_service:service_manager find;
+allow sprd_sgps_app display_service:service_manager find;
+allow sprd_sgps_app gnss_file:dir { read write create open add_name remove_name search };
+allow sprd_sgps_app gnss_file:file { read write create getattr setattr append unlink open };
+allow sprd_sgps_app gpsd:unix_stream_socket { read write getattr sendto connectto };
+allow sprd_sgps_app gpuservice:binder { call transfer };
+allow sprd_sgps_app gpuservice:fd use;
+allow sprd_sgps_app graphicsstats_service:service_manager find;
+allow sprd_sgps_app init:unix_stream_socket connectto;
+allow sprd_sgps_app input_method_service:service_manager find;
+allow sprd_sgps_app input_service:service_manager find;
+allow sprd_sgps_app location_service:service_manager find;
+allow sprd_sgps_app media_session_service:service_manager find;
+allow sprd_sgps_app mount_service:service_manager find;
+allow sprd_sgps_app network_management_service:service_manager find;
+allow sprd_sgps_app notification_service:service_manager find;
+allow sprd_sgps_app power_service:service_manager find;
+allow sprd_sgps_app property_socket:sock_file write;
+allow sprd_sgps_app sprd_sgps_app_userfaultfd:anon_inode { ioctl read create };
+allow sprd_sgps_app surfaceflinger_service:service_manager find;
+allow sprd_sgps_app system_app_data_file:dir { getattr search };
+allow sprd_sgps_app textservices_service:service_manager find;
+allow sprd_sgps_app vendor_default_prop:file { read getattr map open };
+allow sprd_sgps_app vendor_default_prop:file { read open };
+allow sprd_sgps_app vendor_radio_prop:file { getattr map };
+allow sprd_sgps_app vendor_radio_prop:file { read open };
+allow sprd_sgps_app vendor_sys_prop:file { read getattr map open };
+type_transition sprd_sgps_app sprd_sgps_app:anon_inode sprd_sgps_app_userfaultfd "[userfaultfd]";
+type_transition sprd_sgps_app tmpfs:file appdomain_tmpfs;

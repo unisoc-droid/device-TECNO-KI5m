@@ -1,0 +1,18 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type tranlogconfig, domain, hal_tranlogconfig, hal_tranlogconfig_server, halserverdomain;
+type tranlogconfig_exec, exec_type, file_type, vendor_file_type;
+type tranlogconfig_sys_file, fs_type, sysfs_type;
+
+allow tranlogconfig hal_tranlogconfig_hwservice:hwservice_manager add;
+allow tranlogconfig hwservicemanager:binder { call transfer };
+allow tranlogconfig mnt_vendor_file:dir search;
+allow tranlogconfig platform_app:binder call;
+allow tranlogconfig system_app:binder call;
+allow tranlogconfig system_server:binder call;
+allow tranlogconfig tranfs_file:dir { read write create getattr setattr open add_name remove_name search };
+allow tranlogconfig tranfs_file:file { read write create getattr setattr append unlink rename open };
+allow tranlogconfig tranlog_device:chr_file { read write open };
+allow tranlogconfig tranlogconfig_exec:file { read getattr map execute open entrypoint };

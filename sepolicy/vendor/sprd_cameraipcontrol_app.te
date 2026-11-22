@@ -1,0 +1,39 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type sprd_cameraipcontrol_app, appdomain, domain;
+type sprd_cameraipcontrol_app_userfaultfd;
+
+allow sprd_cameraipcontrol_app activity_service:service_manager find;
+allow sprd_cameraipcontrol_app activity_task_service:service_manager find;
+allow sprd_cameraipcontrol_app app_data_file:dir { write add_name remove_name search };
+allow sprd_cameraipcontrol_app app_data_file:file { write create getattr setattr unlink rename open };
+allow sprd_cameraipcontrol_app appdomain_tmpfs:file { read write getattr map execute };
+allow sprd_cameraipcontrol_app audio_service:service_manager find;
+allow sprd_cameraipcontrol_app autofill_service:service_manager find;
+allow sprd_cameraipcontrol_app binder_device:chr_file ioctl;
+allow sprd_cameraipcontrol_app gpu_device:chr_file { ioctl read write map };
+allow sprd_cameraipcontrol_app hal_graphics_allocator_default:fd use;
+allow sprd_cameraipcontrol_app hal_graphics_composer_default:fd use;
+allow sprd_cameraipcontrol_app init:unix_stream_socket connectto;
+allow sprd_cameraipcontrol_app property_socket:sock_file write;
+allow sprd_cameraipcontrol_app servicemanager:binder call;
+allow sprd_cameraipcontrol_app sprd_cameraipcontrol_app_userfaultfd:anon_inode { ioctl read create };
+allow sprd_cameraipcontrol_app surfaceflinger:binder { call transfer };
+allow sprd_cameraipcontrol_app surfaceflinger:fd use;
+allow sprd_cameraipcontrol_app surfaceflinger:unix_stream_socket read;
+allow sprd_cameraipcontrol_app surfaceflinger_service:service_manager find;
+allow sprd_cameraipcontrol_app system_data_file:lnk_file read;
+allow sprd_cameraipcontrol_app system_file:file { read getattr map };
+allow sprd_cameraipcontrol_app system_prop:file { read getattr map open };
+allow sprd_cameraipcontrol_app system_prop:property_service set;
+allow sprd_cameraipcontrol_app system_server:binder { call transfer };
+allow sprd_cameraipcontrol_app system_server:fd use;
+allow sprd_cameraipcontrol_app system_server:unix_stream_socket { read write };
+allow sprd_cameraipcontrol_app tmpfs:file { read write };
+allow sprd_cameraipcontrol_app vendor_camera_prop:file { read getattr map open };
+allow sprd_cameraipcontrol_app vendor_camera_prop:property_service set;
+allow sprd_cameraipcontrol_app zygote:fd use;
+type_transition sprd_cameraipcontrol_app sprd_cameraipcontrol_app:anon_inode sprd_cameraipcontrol_app_userfaultfd "[userfaultfd]";
+type_transition sprd_cameraipcontrol_app tmpfs:file appdomain_tmpfs;

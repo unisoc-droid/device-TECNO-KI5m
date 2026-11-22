@@ -1,0 +1,20 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_bootctrl_default, domain, hal_bootctl, hal_bootctl_client, hal_bootctl_server, halclientdomain, halserverdomain;
+type hal_bootctrl_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_bootctrl_default block_device:dir search;
+allow hal_bootctrl_default gsi_metadata_file:dir search;
+allow hal_bootctrl_default hal_bootctl_hwservice:hwservice_manager { add find };
+allow hal_bootctrl_default hal_bootctrl_default_exec:file { read getattr map execute open entrypoint };
+allow hal_bootctrl_default hwservicemanager:binder { call transfer };
+allow hal_bootctrl_default hwservicemanager_prop:file { read getattr map open };
+allow hal_bootctrl_default metadata_file:dir search;
+allow hal_bootctrl_default mmcblk_device:blk_file { read write getattr open };
+allow hal_bootctrl_default proc_cmdline:file { read getattr open };
+allow hal_bootctrl_default sysfs_dt_firmware_android:dir search;
+allow hal_bootctrl_default sysfs_dt_firmware_android:file { read getattr open };
+allow hal_bootctrl_default ufs_device:blk_file { read write getattr open };
+allow hal_bootctrl_default userdata_block_device:blk_file { read write getattr open };

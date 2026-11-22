@@ -1,0 +1,40 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type execns, domain;
+type execns_exec, exec_type, file_type, vendor_file_type;
+
+allow execns createns:dir search;
+allow execns createns:file read;
+allow execns createns:lnk_file read;
+allow execns dhcpclient:process transition;
+allow execns dhcpclient:process { siginh rlimitinh };
+allow execns dhcpclient_exec:file { read getattr map execute open };
+allow execns dhcpserver:process transition;
+allow execns dhcpserver:process { siginh rlimitinh };
+allow execns dhcpserver_exec:file { read getattr map execute open };
+allow execns execns_exec:file { read getattr map execute open entrypoint };
+allow execns hostapd_nohidl:process transition;
+allow execns hostapd_nohidl:process { siginh rlimitinh };
+allow execns hostapd_nohidl_exec:file { read getattr map execute open };
+allow execns ipv6proxy:process transition;
+allow execns ipv6proxy:process { siginh rlimitinh };
+allow execns ipv6proxy_exec:file { read getattr map execute open };
+allow execns netmgr:process transition;
+allow execns netmgr:process { siginh rlimitinh };
+allow execns netmgr_exec:file { read getattr map execute open };
+allow execns nsfs:file { read open };
+allow execns self:capability { setgid setuid sys_admin };
+allow execns varrun_file:dir search;
+allow execns varrun_file:file { ioctl read getattr lock map open watch watch_reads };
+dontaudit execns dhcpclient:process noatsecure;
+dontaudit execns dhcpserver:process noatsecure;
+dontaudit execns hostapd_nohidl:process noatsecure;
+dontaudit execns ipv6proxy:process noatsecure;
+dontaudit execns netmgr:process noatsecure;
+type_transition execns dhcpclient_exec:process dhcpclient;
+type_transition execns dhcpserver_exec:process dhcpserver;
+type_transition execns hostapd_nohidl_exec:process hostapd_nohidl;
+type_transition execns ipv6proxy_exec:process ipv6proxy;
+type_transition execns netmgr_exec:process netmgr;

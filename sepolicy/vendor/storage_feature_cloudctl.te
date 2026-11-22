@@ -1,0 +1,39 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type storage_feature_cloudctl, domain;
+type storage_feature_cloudctl_exec, exec_type, file_type, vendor_file_type;
+
+allow storage_feature_cloudctl block_device:dir search;
+allow storage_feature_cloudctl block_device:lnk_file { read write open };
+allow storage_feature_cloudctl boot_status_prop:file { read getattr map open };
+allow storage_feature_cloudctl loop_device:blk_file { read write open };
+allow storage_feature_cloudctl misc_sd_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow storage_feature_cloudctl proc_cmdline:file { read getattr open };
+allow storage_feature_cloudctl proc_healthinfo:file { ioctl read write getattr lock append map open watch watch_reads };
+allow storage_feature_cloudctl property_socket:sock_file { read write };
+allow storage_feature_cloudctl storage_feature_cloudctl:capability setgid;
+allow storage_feature_cloudctl storage_feature_cloudctl:capability setuid;
+allow storage_feature_cloudctl storage_feature_cloudctl_exec:file { read getattr map execute open entrypoint };
+allow storage_feature_cloudctl sysfs:file { read write open };
+allow storage_feature_cloudctl sysfs_batteryinfo:dir { ioctl read getattr lock open watch watch_reads search };
+allow storage_feature_cloudctl sysfs_batteryinfo:file { ioctl read getattr lock map open watch watch_reads };
+allow storage_feature_cloudctl sysfs_devices_block:dir { ioctl read getattr lock open watch watch_reads search };
+allow storage_feature_cloudctl sysfs_emmc_ffu_capable_file:file { ioctl read getattr lock map open watch watch_reads };
+allow storage_feature_cloudctl sysfs_emmc_frmver_file:file { ioctl read getattr lock map open watch watch_reads };
+allow storage_feature_cloudctl sysfs_power:dir { read open search };
+allow storage_feature_cloudctl sysfs_power:file { read getattr open };
+allow storage_feature_cloudctl tranfs_file:dir { read write create getattr setattr unlink link open add_name remove_name search };
+allow storage_feature_cloudctl tranfs_file:file { ioctl read write create getattr setattr lock append unlink link rename open };
+allow storage_feature_cloudctl tranfs_file:lnk_file { read write create lock unlink rename open };
+allow storage_feature_cloudctl tranlog_device:chr_file { read write open };
+allow storage_feature_cloudctl ufs_device:blk_file ioctl;
+allow storage_feature_cloudctl ufs_device:blk_file { ioctl read write getattr setattr lock append map open watch watch_reads };
+allow storage_feature_cloudctl ufs_device:blk_file { read write open };
+allow storage_feature_cloudctl unlabeled:dir { read open search };
+allow storage_feature_cloudctl vendor_shell_exec:file { read execute open execute_no_trans };
+allow storage_feature_cloudctl vendor_tranlog_default_prop:file { read getattr map open };
+allowxperm storage_feature_cloudctl ufs_device:blk_file ioctl { 0x2285 };
+allowxperm storage_feature_cloudctl ufs_device:blk_file ioctl { 0x5379 0x5388 0x538a 0x5390-0x5391 };
+allowxperm storage_feature_cloudctl ufs_device:blk_file ioctl { 0xb300-0xb301 };

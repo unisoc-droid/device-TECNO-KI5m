@@ -1,0 +1,12 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type nhMonitorCtrl, domain;
+type nhMonitorCtrl_exec, exec_type, file_type, vendor_file_type;
+
+allow nhMonitorCtrl init:unix_stream_socket connectto;
+allow nhMonitorCtrl nhMonitorCtrl_exec:file { read getattr map execute open entrypoint };
+allow nhMonitorCtrl property_socket:sock_file write;
+allow nhMonitorCtrl vendor_nhmonitor_prop:file { read getattr map open };
+allow nhMonitorCtrl vendor_nhmonitor_prop:property_service set;

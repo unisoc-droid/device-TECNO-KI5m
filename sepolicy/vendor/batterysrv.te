@@ -1,0 +1,13 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type batterysrv, domain;
+type batterysrv_exec, exec_type, file_type, vendor_file_type;
+
+allow batterysrv batterysrv:netlink_kobject_uevent_socket { read create bind setopt };
+allow batterysrv batterysrv_exec:file { read getattr map execute open entrypoint };
+allow batterysrv prod_file:dir { ioctl read write getattr lock append map open watch watch_reads add_name search };
+allow batterysrv prod_file:file { ioctl read write create getattr lock append map open watch watch_reads };
+allow batterysrv self:capability net_admin;
+allow batterysrv sysfs:file write;

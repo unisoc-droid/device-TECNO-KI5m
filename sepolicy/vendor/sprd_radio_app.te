@@ -1,0 +1,53 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type sprd_radio_app, appdomain, domain;
+type sprd_radio_app_tmpfs, file_type;
+type sprd_radio_app_userfaultfd;
+
+allow sprd_radio_app accessibility_service:service_manager find;
+allow sprd_radio_app activity_service:service_manager find;
+allow sprd_radio_app activity_task_service:service_manager find;
+allow sprd_radio_app adbd:unix_stream_socket connectto;
+allow sprd_radio_app app_data_file:dir { getattr search };
+allow sprd_radio_app app_data_file:file { read write open };
+allow sprd_radio_app appdomain_tmpfs:file { read write getattr map execute };
+allow sprd_radio_app ashmem_device:chr_file execute;
+allow sprd_radio_app binder_device:chr_file { ioctl read write open };
+allow sprd_radio_app connectivity_service:service_manager find;
+allow sprd_radio_app content_capture_service:service_manager find;
+allow sprd_radio_app dalvikcache_data_file:dir getattr;
+allow sprd_radio_app dalvikcache_data_file:file { read getattr open };
+allow sprd_radio_app display_service:service_manager find;
+allow sprd_radio_app graphicsstats_service:service_manager find;
+allow sprd_radio_app hal_cplog_connmgr_default:unix_stream_socket connectto;
+allow sprd_radio_app input_method_service:service_manager find;
+allow sprd_radio_app input_service:service_manager find;
+allow sprd_radio_app media_session_service:service_manager find;
+allow sprd_radio_app mnt_expand_file:dir getattr;
+allow sprd_radio_app modem_control:unix_stream_socket { read write connectto };
+allow sprd_radio_app network_management_service:service_manager find;
+allow sprd_radio_app notification_service:service_manager find;
+allow sprd_radio_app search_service:service_manager find;
+allow sprd_radio_app slogmodem_vendor:unix_stream_socket connectto;
+allow sprd_radio_app sprd_radio_app:process execmem;
+allow sprd_radio_app sprd_radio_app_userfaultfd:anon_inode { ioctl read create };
+allow sprd_radio_app surfaceflinger:binder call;
+allow sprd_radio_app surfaceflinger_service:service_manager find;
+allow sprd_radio_app system_data_file:dir getattr;
+allow sprd_radio_app system_data_file:lnk_file { read getattr };
+allow sprd_radio_app tethering_service:service_manager find;
+allow sprd_radio_app tmpfs:file { read execute };
+allow sprd_radio_app trust_service:service_manager find;
+allow sprd_radio_app uimode_service:service_manager find;
+allow sprd_radio_app user_profile_data_file:file { read getattr open };
+allow sprd_radio_app vendor_default_prop:file { read getattr map open };
+allow sprd_radio_app vendor_radio_prop:file map;
+allow sprd_radio_app vendor_radio_prop:file { read getattr open };
+allow sprd_radio_app vendor_sys_prop:file map;
+allow sprd_radio_app vendor_sys_prop:file { read getattr open };
+allow sprd_radio_app wcnd:unix_stream_socket connectto;
+allow sprd_radio_app zygote:fd use;
+type_transition sprd_radio_app sprd_radio_app:anon_inode sprd_radio_app_userfaultfd "[userfaultfd]";
+type_transition sprd_radio_app tmpfs:file appdomain_tmpfs;

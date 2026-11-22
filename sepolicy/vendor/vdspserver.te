@@ -1,0 +1,35 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type vdspserver, domain;
+type vdspserver_exec, exec_type, file_type, vendor_file_type;
+
+allow vdspserver dev_vdsp:chr_file map;
+allow vdspserver dev_vdsp:chr_file { ioctl read write map open };
+allow vdspserver device:chr_file ioctl;
+allow vdspserver device:dir { ioctl read write getattr lock open watch watch_reads add_name remove_name search };
+allow vdspserver gpu_device:chr_file { ioctl read write getattr open };
+allow vdspserver graphics_device:chr_file { ioctl read write getattr open };
+allow vdspserver hal_camera_default:fd use;
+allow vdspserver hal_default_vdsp_hwservice:hwservice_manager { add find };
+allow vdspserver hal_face_default:fd use;
+allow vdspserver hal_graphics_allocator_default:fd use;
+allow vdspserver hal_xtensa_default:fd use;
+allow vdspserver hidl_base_hwservice:hwservice_manager add;
+allow vdspserver hwservicemanager:binder { call transfer };
+allow vdspserver hwservicemanager_prop:file { read getattr map open };
+allow vdspserver ion_device:chr_file { ioctl read write open };
+allow vdspserver mmcblk_device:file { read getattr execute open };
+allow vdspserver platform_app:fd use;
+allow vdspserver prod_file:dir search;
+allow vdspserver self:process execmem;
+allow vdspserver sensorhub_data_file:dir search;
+allow vdspserver sysfs:file getattr;
+allow vdspserver system_server:binder { call transfer };
+allow vdspserver system_server:fd use;
+allow vdspserver vdspserver_exec:file { read getattr map execute open entrypoint };
+allow vdspserver vendor_file:file { read getattr };
+allow vdspserver vndbinder_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vdspserver vndbinder_device:chr_file { ioctl read write getattr map open };
+allow vdspserver vndservicemanager:binder { call transfer };

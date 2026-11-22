@@ -1,0 +1,26 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type mlogservice, domain;
+type mlogservice_config_file, data_file_type, file_type;
+type mlogservice_data, data_file_type, file_type;
+type mlogservice_exec, exec_type, file_type, vendor_file_type;
+
+allow mlogservice hal_cplog_connmgr_default:unix_stream_socket connectto;
+allow mlogservice hal_extRadio_hwservice:hwservice_manager find;
+allow mlogservice hwservicemanager:binder { call transfer };
+allow mlogservice hwservicemanager_prop:file { read getattr map open };
+allow mlogservice init:unix_stream_socket connectto;
+allow mlogservice mlogservice_config_file:dir { read write unlink add_name remove_name search };
+allow mlogservice mlogservice_config_file:file { read write create getattr unlink open };
+allow mlogservice mlogservice_exec:file { read getattr map execute open entrypoint };
+allow mlogservice modem_control:unix_stream_socket { read write connectto };
+allow mlogservice property_socket:sock_file write;
+allow mlogservice rild:binder call;
+allow mlogservice slogmodem_vendor:unix_stream_socket connectto;
+allow mlogservice spipe_device:chr_file { read write open };
+allow mlogservice tty_device:chr_file { read write open };
+allow mlogservice vendor_sys_prop:file { read getattr map open };
+allow mlogservice vendor_sys_prop:property_service set;
+allow mlogservice wcnd:unix_stream_socket connectto;

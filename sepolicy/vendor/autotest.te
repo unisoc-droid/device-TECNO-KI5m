@@ -1,0 +1,12 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type autotest, domain;
+type autotest_device, dev_type;
+type autotest_tmpfs, file_type;
+
+allow autotest fp_ext_svc2_service:hwservice_manager find;
+allow autotest fpsensor_fp_device:chr_file { ioctl read write open };
+allow autotest hal_fingerprint_default:binder { call transfer };
+allow autotest teetz_device:chr_file { ioctl read write open };

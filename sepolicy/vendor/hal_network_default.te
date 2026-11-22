@@ -1,0 +1,16 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_network_default, domain;
+type hal_network_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_network_default engpc:unix_stream_socket connectto;
+allow hal_network_default engpcctl_exec:file execute_no_trans;
+allow hal_network_default hal_network_default_exec:file { read getattr map execute open entrypoint };
+allow hal_network_default hal_network_hwservice:hwservice_manager { add find };
+allow hal_network_default hidl_base_hwservice:hwservice_manager add;
+allow hal_network_default hwservicemanager:binder { call transfer };
+allow hal_network_default hwservicemanager_prop:file { read getattr map open };
+allow hal_network_default modem_control:unix_stream_socket { read write connectto };
+allow hal_network_default vendor_shell_exec:file execute_no_trans;

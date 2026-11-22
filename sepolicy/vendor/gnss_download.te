@@ -1,0 +1,11 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type gnss_download, domain;
+type gnss_download_exec, exec_type, file_type, vendor_file_type;
+
+allow gnss_download gnss_download:unix_stream_socket connectto;
+allow gnss_download gnss_download_exec:file { read getattr map execute open entrypoint };
+allow gnss_download serial_device:chr_file { ioctl read write open };
+allow gnss_download wcn_device:chr_file { ioctl read write open };

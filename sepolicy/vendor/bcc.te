@@ -1,0 +1,8 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type bcc, domain;
+type bcc_exec, exec_type, file_type, vendor_file_type;
+
+allow bcc bcc_exec:file { read getattr map execute open entrypoint };

@@ -1,0 +1,21 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type iqfeed, domain;
+type iqfeed_exec, exec_type, file_type, vendor_file_type;
+
+allow iqfeed block_device:dir search;
+allow iqfeed ctl_default_prop:property_service set;
+allow iqfeed fuse:dir { read write create getattr unlink open add_name remove_name search rmdir };
+allow iqfeed fuse:file { read write create getattr unlink rename open };
+allow iqfeed iqfeed_exec:file { read getattr map execute open entrypoint };
+allow iqfeed mmcblk_device:blk_file { read open };
+allow iqfeed mnt_media_rw_file:dir { read open search };
+allow iqfeed proc:file { read open };
+allow iqfeed slog_device:chr_file { ioctl read write getattr open };
+allow iqfeed sysfs:file { read open };
+allow iqfeed ufs_device:blk_file { read open };
+allow iqfeed userdata_block_device:blk_file { read open };
+allow iqfeed vfat:dir { read getattr open search };
+allow iqfeed vfat:file { read getattr open };

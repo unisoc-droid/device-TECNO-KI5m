@@ -1,0 +1,13 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_wired_se_default, domain, hal_secure_element, hal_secure_element_server, hal_wired_se, hal_wired_se_server, halserverdomain;
+type hal_wired_se_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_wired_se_default hal_secure_element_hwservice:hwservice_manager add;
+allow hal_wired_se_default hal_wired_se_default_exec:file { read getattr map execute open entrypoint };
+allow hal_wired_se_default hal_wired_se_hwservice:hwservice_manager { add find };
+allow hal_wired_se_default nfc_vendor_data_file:dir { read write add_name remove_name search };
+allow hal_wired_se_default nfc_vendor_data_file:file { read write create getattr append unlink open };
+allow hal_wired_se_default secure_element_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };

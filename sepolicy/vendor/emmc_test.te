@@ -1,0 +1,20 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type emmc_test, domain;
+type emmc_test_exec, exec_type, file_type, vendor_file_type;
+
+allow emmc_test bootdevice_block_device:blk_file ioctl;
+allow emmc_test emmc_test_exec:file { read getattr map execute open entrypoint };
+allow emmc_test proc_cmdline:file { read getattr open };
+allow emmc_test proc_healthinfo:file { ioctl read write getattr lock append map open watch watch_reads };
+allow emmc_test tranfs_file:dir search;
+allow emmc_test tranfs_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow emmc_test ufs_device:blk_file { ioctl read write getattr lock open };
+allowxperm emmc_test bootdevice_block_device:blk_file ioctl { 0x2285 };
+allowxperm emmc_test bootdevice_block_device:blk_file ioctl { 0x5379 0x5388 0x5390-0x5391 };
+allowxperm emmc_test bootdevice_block_device:blk_file ioctl { 0xb300-0xb301 };
+allowxperm emmc_test ufs_device:blk_file ioctl { 0x2285 };
+allowxperm emmc_test ufs_device:blk_file ioctl { 0x5379 0x5388 0x538a 0x5390-0x5391 };
+allowxperm emmc_test ufs_device:blk_file ioctl { 0xb300-0xb301 };

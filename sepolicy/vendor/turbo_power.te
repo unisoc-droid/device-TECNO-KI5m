@@ -1,0 +1,12 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type turbo_power, domain, hal_power_client, halclientdomain, mlstrustedsubject;
+type turbo_power_exec, exec_type, file_type, vendor_file_type;
+
+allow turbo_power proc_turbo:dir { read search };
+allow turbo_power proc_turbo:file { ioctl read open };
+allow turbo_power servicemanager:binder call;
+allow turbo_power turbo_power_exec:file { read getattr map execute open entrypoint };
+allowxperm turbo_power proc_turbo:file ioctl { 0x6711 };

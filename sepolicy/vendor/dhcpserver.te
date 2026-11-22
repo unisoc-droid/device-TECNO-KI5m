@@ -1,0 +1,12 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type dhcpserver, domain, netdomain;
+type dhcpserver_exec, exec_type, file_type, vendor_file_type;
+
+allow dhcpserver dhcpserver_exec:file { read getattr map execute open entrypoint };
+allow dhcpserver execns:fd use;
+allow dhcpserver execns:process sigchld;
+allow dhcpserver self:capability { net_bind_service net_raw };
+allow dhcpserver self:udp_socket { ioctl create bind setopt };

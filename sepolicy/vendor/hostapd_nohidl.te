@@ -1,0 +1,21 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hostapd_nohidl, domain, netdomain;
+type hostapd_nohidl_exec, exec_type, file_type, vendor_file_type;
+
+allow hostapd_nohidl execns:fd use;
+allow hostapd_nohidl execns:process sigchld;
+allow hostapd_nohidl hostapd_data_file:dir { ioctl read getattr lock open watch watch_reads search };
+allow hostapd_nohidl hostapd_data_file:file { ioctl read getattr lock map open watch watch_reads };
+allow hostapd_nohidl hostapd_nohidl_exec:file { read getattr map execute open entrypoint };
+allow hostapd_nohidl kernel:system module_request;
+allow hostapd_nohidl self:capability { setgid setuid net_admin net_raw };
+allow hostapd_nohidl self:netlink_generic_socket { read write create getattr bind setopt };
+allow hostapd_nohidl self:netlink_route_socket nlmsg_write;
+allow hostapd_nohidl self:packet_socket { read write create setopt };
+allowxperm hostapd_nohidl self:udp_socket ioctl { 0x6900 0x6902 };
+allowxperm hostapd_nohidl self:udp_socket ioctl { 0x890b-0x890d 0x8911 0x8914 0x8916 0x8918 0x891a 0x891c-0x8920 0x8922-0x8927 0x8929 0x8930-0x8932 0x8934-0x8937 0x8939 0x8940-0x8941 0x8943 0x8946-0x894b 0x8953-0x8955 0x8960-0x8962 0x8970-0x8971 0x8980-0x8983 0x8990-0x8995 0x89a0-0x89a3 0x89b0 0x89e0-0x89ff };
+allowxperm hostapd_nohidl self:udp_socket ioctl { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 0x8b14-0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 0x8b2a-0x8b2c 0x8b30-0x8b36 0x8be0-0x8bff };
+dontaudit hostapd_nohidl sysfs_net:dir search;

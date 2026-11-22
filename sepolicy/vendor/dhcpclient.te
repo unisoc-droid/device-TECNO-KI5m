@@ -1,0 +1,19 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type dhcpclient, domain, netdomain;
+type dhcpclient_exec, exec_type, file_type, vendor_file_type;
+
+allow dhcpclient dhcpclient_exec:file { read getattr map execute open entrypoint };
+allow dhcpclient execns:fd use;
+allow dhcpclient execns:process sigchld;
+allow dhcpclient init:unix_stream_socket connectto;
+allow dhcpclient property_socket:sock_file write;
+allow dhcpclient self:capability { net_admin net_raw };
+allow dhcpclient self:netlink_route_socket { write nlmsg_write };
+allow dhcpclient self:packet_socket { read write create bind };
+allow dhcpclient self:udp_socket create;
+allow dhcpclient varrun_file:dir search;
+allowxperm dhcpclient self:udp_socket ioctl { 0x8914 0x8916 0x891c 0x8922 0x8927 };
+dontaudit dhcpclient kernel:system module_request;

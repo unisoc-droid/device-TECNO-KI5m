@@ -1,0 +1,13 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type rwmiscdata, domain, mlstrustedsubject;
+type rwmiscdata_exec, exec_type, file_type;
+type rwmiscdata_socket, file_type;
+
+allow rwmiscdata block_device:dir search;
+allow rwmiscdata mmcblk_device:blk_file { read write getattr open };
+allow rwmiscdata rwmiscdata_socket:sock_file { ioctl read write getattr lock append map open watch watch_reads };
+allow rwmiscdata ufs_device:blk_file { read write getattr open };
+allow rwmiscdata vendor_product_prop:file { read getattr map open };

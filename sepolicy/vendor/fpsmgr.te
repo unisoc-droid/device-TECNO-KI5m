@@ -1,0 +1,17 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type fpsmgr, domain;
+type fpsmgr_exec, exec_type, file_type, vendor_file_type;
+type fpsmgr_vendor_data_file, data_file_type, file_type;
+
+allow fpsmgr fpsmgr_exec:file { read getattr map execute open entrypoint };
+allow fpsmgr fpsmgr_vendor_data_file:dir { read write create getattr setattr open add_name remove_name search };
+allow fpsmgr fpsmgr_vendor_data_file:file { read write create getattr setattr append unlink rename open };
+allow fpsmgr sysfs_fpsmgr:dir { read open search };
+allow fpsmgr sysfs_fpsmgr:file { read write getattr open };
+allow fpsmgr sysfs_hybrid:dir { read open search };
+allow fpsmgr sysfs_hybrid:file { read write getattr open };
+allow fpsmgr sysfs_turbo:dir { read open search };
+allow fpsmgr sysfs_turbo:file { read write getattr open };

@@ -1,0 +1,6 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type remosaic_daemon_service, vndservice_manager_type;
+type pnpmgr_service, vndservice_manager_type;

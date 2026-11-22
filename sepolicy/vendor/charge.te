@@ -1,0 +1,37 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type charge, domain;
+type charge_exec, exec_type, file_type, vendor_file_type;
+
+allow charge charge:capability { sys_admin sys_boot sys_tty_config };
+allow charge charge_exec:file { read getattr map execute open entrypoint };
+allow charge device:chr_file { create unlink };
+allow charge device:dir { read write open };
+allow charge gpu_device:chr_file { ioctl read write map open };
+allow charge graphics_device:chr_file { ioctl read write open };
+allow charge graphics_device:dir search;
+allow charge input_device:chr_file { ioctl read open };
+allow charge input_device:dir { read open search };
+allow charge kmsg_device:chr_file { write open };
+allow charge prod_file:dir { read getattr open search };
+allow charge prod_file:file { ioctl read write getattr setattr lock unlink open };
+allow charge refnotify_device:chr_file { ioctl read write getattr map execute open entrypoint };
+allow charge sysfs:dir { read open };
+allow charge sysfs:file { read write open };
+allow charge sysfs_extdata:dir { read open search };
+allow charge sysfs_extdata:file { read write getattr open };
+allow charge sysfs_leds:dir { read open search };
+allow charge sysfs_leds:file { read write open };
+allow charge sysfs_power:dir { read open search };
+allow charge sysfs_power:file { read write open };
+allow charge sysfs_rtc:dir { read open search };
+allow charge sysfs_rtc:file { read write open };
+allow charge sysfs_transsion_backlight_midtest:file { ioctl read write getattr lock append map open watch watch_reads };
+allow charge sysfs_transsion_leds:dir search;
+allow charge sysfs_transsion_leds:file { read write getattr open };
+allow charge sysfs_wake_lock:file { read write open };
+allow charge tty_device:chr_file { ioctl read write open };
+allow charge vendor_hwrotation_prop:file { read getattr map open };
+allow charge vendor_shell_exec:file { read execute open execute_no_trans };

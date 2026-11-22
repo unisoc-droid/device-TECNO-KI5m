@@ -1,0 +1,11 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type dcxsrv, domain;
+type dcxsrv_exec, exec_type, file_type, vendor_file_type;
+
+allow dcxsrv dcxsrv_exec:file { read getattr map execute open entrypoint };
+allow dcxsrv prod_file:dir { read write open add_name remove_name search };
+allow dcxsrv prod_file:file { ioctl read write create getattr setattr lock append map unlink open watch watch_reads };
+allow dcxsrv sysfs:file { ioctl read write open };

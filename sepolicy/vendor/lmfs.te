@@ -1,0 +1,12 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type lmfs, domain, mlstrustedsubject;
+type lmfs_exec, exec_type, file_type, vendor_file_type;
+
+allow lmfs lmfs:capability { net_admin ipc_lock };
+allow lmfs lmfs:netlink_socket { read write create getattr setattr lock append map bind connect getopt setopt shutdown };
+allow lmfs lmfs:sock_file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow lmfs lmfs:unix_stream_socket write;
+allow lmfs lmfs_exec:file { read getattr map execute open entrypoint };

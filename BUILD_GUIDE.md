@@ -57,8 +57,9 @@ sumber kernel (prebuilt vs source build), modul vendor, dan kontrak OTA.
 | `lineage_<device>.mk` | `lineage_ki5m.mk` | Nama produk sengaja `lineage_ki5m` agar `lunch` pendek; `PRODUCT_SHIPPING_API_LEVEL := 31`. |
 | `rootdir/etc/fstab.KI5m` (fstab lengkap) | `rootdir/fstab.KI5m` (first-stage) | Hanya partisi logical + metadata + misc yang dipakai first-stage. `/data` dan `/cache` tidak dimount di first stage. |
 | `prebuilts/kernel`, `prebuilts/dtb.img`, `prebuilts/dtbo.img` | tidak ada | KI5m membangun kernel dari `kernel/tecno/TECNO-KI5m`; DTB/DTBO dibuat oleh `dtb.mk` / `dtbo.mk`. |
-| `manifest.xml`, `vendor.prop`, `proprietary-files.txt`, `extract-files.py` | tidak ada | `vendor.img` stock V218 dipakai apa adanya; VINTF/props sudah ada di dalam image. Metadata hanya disimpan sebagai bukti di repo vendor. |
-| `Android.bp`, `Android.mk`, `rootdir/Android.{bp,mk}` | tidak ada | Tidak ada modul Soong lokal; rootdir disalin lewat `PRODUCT_COPY_FILES`. |
+| `proprietary-files.txt`, `extract-files.sh`, `setup-makefiles.sh` | ada | Vendor tree standar `extract-utils` (346 blob OEM). Blob tidak di-commit; disediakan sekali dari firmware stock berlisensi. Image prebuilt tetap sebagai fallback opsional. |
+| `Android.bp`, `Android.mk`, `rootdir/Android.{bp,mk}` | ada di vendor | `soong_namespace`, 5 `prebuilt_etc_xml`, `prebuilt_hidl_interfaces`, 19 symlink vendor. rootdir device disalin lewat `PRODUCT_COPY_FILES`. |
+| VINTF/props stock | `vendor/prebuilt/inspection/` | Metadata hasil ekstraksi sebagai bukti sumber; tidak dipakai sebagai pengganti build. |
 | — | `lineage.dependencies`, `dtb.mk`, `dtbo.mk` | Standar LineageOS: roomservice mencari vendor/kernel, kernel.mk menyertakan rule DTB/DTBO. |
 
 ## 4. Fakta perangkat (ADB read-only, 22 November 2026)
@@ -96,21 +97,30 @@ konfigurasi ROM KI5m.
    Simpan sebagai `.repo/local_manifests/ki5m.xml`, lalu `repo sync` untuk
    tiga path tersebut.
 
-2. Stage `vendor.img` stock (tidak di-commit karena 803 MB):
+2. Provision blob OEM **sekali** (tidak di-commit karena hak redistribusi):
 
    ```sh
-   cp /path/to/vendor.img vendor/tecno/TECNO-KI5m/prebuilt/vendor.img
-   sha256sum vendor/tecno/TECNO-KI5m/prebuilt/vendor.img
-   # harus: fed3cf42811d3ddde84d558e1abb916e292cac4d56e8bd9beb1b69947ffb7207
+   cd vendor/tecno/TECNO-KI5m
+   ./extract-files.sh /path/to/stock/vendor.img
+   cd ../../..
    ```
 
-3. Dari root ROM:
+   Verifikasi image stock: SHA-256
+   `fed3cf42811d3ddde84d558e1abb916e292cac4d56e8bd9beb1b69947ffb7207`
+   (841748480 bytes, EROFS). Jangan pakai image V133. Fallback opsional:
+   stage image di `prebuilt/vendor.img` lalu build dengan
+   `KI5M_USE_PREBUILT_VENDORIMAGE=true`.
+
+3. Dari root ROM (tiga perintah standar):
 
    ```sh
    source build/envsetup.sh
-   breakfast lineage_ki5m
-   mka   # atau: mka bootimage untuk iterasi awal
+   lunch lineage_ki5m-userdebug
+   mka bacon
    ```
+
+   Tidak ada export tambahan, ekstraksi manual, atau patch build file setelah
+   provisioning. `device.mk` gagal dengan pesan jelas bila provisioning dilewat.
 
    `lineage.dependencies` sudah berisi vendor + kernel, sehingga roomservice
    tidak perlu entri manual untuk keduanya.

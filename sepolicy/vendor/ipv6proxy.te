@@ -1,0 +1,18 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type ipv6proxy, domain, netdomain;
+type ipv6proxy_exec, exec_type, file_type, vendor_file_type;
+
+allow ipv6proxy execns:fd use;
+allow ipv6proxy execns:process sigchld;
+allow ipv6proxy init:unix_stream_socket connectto;
+allow ipv6proxy ipv6proxy_exec:file { read getattr map execute open entrypoint };
+allow ipv6proxy property_socket:sock_file write;
+allow ipv6proxy self:capability { net_admin net_raw sys_module sys_admin };
+allow ipv6proxy self:netlink_route_socket nlmsg_write;
+allow ipv6proxy self:packet_socket { read create bind };
+allow ipv6proxy varrun_file:dir search;
+allowxperm ipv6proxy self:udp_socket ioctl { 0x8914 0x8927 };
+dontaudit ipv6proxy kernel:system module_request;

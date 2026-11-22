@@ -1,0 +1,14 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_trustyclient_default, domain;
+type hal_trustyclient_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_trustyclient_default hal_trustyclient_default_exec:file { read getattr map execute open entrypoint };
+allow hal_trustyclient_default hal_trustyclient_hwservice:hwservice_manager { add find };
+allow hal_trustyclient_default hidl_base_hwservice:hwservice_manager add;
+allow hal_trustyclient_default hwservicemanager:binder { call transfer };
+allow hal_trustyclient_default hwservicemanager_prop:file { read getattr map open };
+allow hal_trustyclient_default platform_app:binder transfer;
+allow hal_trustyclient_default teetz_device:chr_file { ioctl read write open };

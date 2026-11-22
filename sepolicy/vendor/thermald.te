@@ -1,0 +1,29 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type thermald, domain;
+type thermald_exec, exec_type, file_type, vendor_file_type;
+
+allow thermald hal_extRadio_hwservice:hwservice_manager find;
+allow thermald hwservicemanager:binder call;
+allow thermald hwservicemanager:binder transfer;
+allow thermald hwservicemanager_prop:file map;
+allow thermald hwservicemanager_prop:file { read getattr open };
+allow thermald init:unix_stream_socket connectto;
+allow thermald kmsg_device:chr_file { write open };
+allow thermald powerctl_prop:property_service set;
+allow thermald prod_file:dir { read write getattr open add_name remove_name search rmdir };
+allow thermald prod_file:file { read write create getattr unlink open };
+allow thermald property_socket:sock_file write;
+allow thermald rild:binder call;
+allow thermald sysfs:file { ioctl read write getattr open };
+allow thermald sysfs_power:dir search;
+allow thermald sysfs_power:file { read write open };
+allow thermald sysfs_temp:file { read getattr open };
+allow thermald system_file:dir { read open };
+allow thermald thermald:netlink_kobject_uevent_socket { read create bind getopt setopt };
+allow thermald thermald_exec:file { read getattr map execute open entrypoint };
+allow thermald tmpfs:file write;
+allow thermald vendor_thermald_prop:file { read getattr map open };
+allow thermald vendor_thermald_prop:property_service set;

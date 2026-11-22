@@ -1,0 +1,22 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type srtd, domain, mlstrustedsubject;
+type srtd_exec, exec_type, file_type, vendor_file_type;
+
+allow srtd fuse:dir search;
+allow srtd hal_extRadio_hwservice:hwservice_manager find;
+allow srtd hwservicemanager:binder call;
+allow srtd hwservicemanager_prop:file { read getattr map open };
+allow srtd init:unix_stream_socket connectto;
+allow srtd property_socket:sock_file write;
+allow srtd rild:binder call;
+allow srtd srtd:capability { kill ipc_lock };
+allow srtd srtd_exec:file { read getattr map execute open entrypoint };
+allow srtd vendor_eng_prop:file { read getattr map open };
+allow srtd vendor_eng_prop:property_service set;
+allow srtd vendor_sys_prop:file { read getattr map open };
+allow srtd vendor_sys_prop:property_service set;
+allow srtd vendor_systemdebuggerd_prop:file { read getattr map open };
+allow srtd vendor_systemdebuggerd_prop:property_service set;

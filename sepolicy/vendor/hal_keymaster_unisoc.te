@@ -1,0 +1,10 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_keymaster_unisoc, domain, hal_keymaster, hal_keymaster_server, halserverdomain;
+type hal_keymaster_unisoc_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_keymaster_unisoc hal_keymaster_unisoc_exec:file { read getattr map execute open entrypoint };
+allow hal_keymaster_unisoc teetz_device:chr_file { ioctl read write open };
+allow hal_keymaster_unisoc vendor_security_patch_level_prop:file { read getattr map open };

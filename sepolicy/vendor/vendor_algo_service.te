@@ -1,0 +1,25 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type vendor_algo_service, domain;
+type vendor_algo_service_exec, exec_type, file_type, vendor_file_type;
+
+allow vendor_algo_service gpu_device:chr_file { ioctl read write getattr map open };
+allow vendor_algo_service hal_camera_default:binder transfer;
+allow vendor_algo_service hal_camera_default:fd use;
+allow vendor_algo_service hal_default_algo_hwservice:hwservice_manager { add find };
+allow vendor_algo_service hal_graphics_allocator_default:binder { call transfer };
+allow vendor_algo_service hal_graphics_allocator_default:fd use;
+allow vendor_algo_service hidl_base_hwservice:hwservice_manager add;
+allow vendor_algo_service hwservicemanager:binder transfer;
+allow vendor_algo_service hwservicemanager:binder { call transfer };
+allow vendor_algo_service hwservicemanager:fd use;
+allow vendor_algo_service hwservicemanager_prop:file { read getattr map open };
+allow vendor_algo_service ion_device:chr_file { ioctl read open };
+allow vendor_algo_service ion_device:chr_file { read write };
+allow vendor_algo_service vendor_algo_service_exec:file { read getattr map execute open entrypoint };
+allow vendor_algo_service vendor_camera_data_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow vendor_algo_service vendor_camera_data_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow vendor_algo_service vndbinder_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_algo_service vndservicemanager:binder { call transfer };

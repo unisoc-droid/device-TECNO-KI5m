@@ -1,0 +1,14 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_thermal_ext, domain, hal_thermal, hal_thermal_server, halserverdomain;
+type hal_thermal_ext_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_thermal_ext hal_extthermal_hwservice:hwservice_manager { add find };
+allow hal_thermal_ext hal_thermal_ext_exec:file { read getattr map execute open entrypoint };
+allow hal_thermal_ext proc_stat:file { read getattr open };
+allow hal_thermal_ext sysfs:dir { read open };
+allow hal_thermal_ext sysfs:file { read getattr open };
+allow hal_thermal_ext sysfs_temp:file { read getattr open };
+allow hal_thermal_ext thermald:unix_stream_socket connectto;

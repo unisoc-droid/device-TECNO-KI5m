@@ -1,0 +1,19 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type batterywarning, domain, mlstrustedsubject;
+type batterywarning_exec, exec_type, file_type;
+type batterywarning_file, core_data_file_type, data_file_type, file_type;
+
+allow batterywarning activity_service:service_manager find;
+allow batterywarning binder_device:chr_file { ioctl read write getattr map open };
+allow batterywarning self:netlink_kobject_uevent_socket { read create bind getopt setopt };
+allow batterywarning servicemanager:binder call;
+allow batterywarning servicemanager:binder { call transfer };
+allow batterywarning servicemanager:dir { read getattr open search };
+allow batterywarning servicemanager:file { read open };
+allow batterywarning servicemanager:lnk_file { read getattr };
+allow batterywarning servicemanager:netlink_selinux_socket getattr;
+allow batterywarning sysfs_battery_warning:file { read getattr open };
+allow batterywarning system_server:binder call;

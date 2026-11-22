@@ -1,0 +1,35 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_cplog_svc_default, domain;
+type hal_cplog_svc_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_cplog_svc_default audio_device:chr_file { ioctl read write open };
+allow hal_cplog_svc_default engpc:unix_stream_socket { read write connectto };
+allow hal_cplog_svc_default hal_cplog_svc_default_exec:file { read getattr map execute open entrypoint };
+allow hal_cplog_svc_default hal_cplog_svc_hwservice:hwservice_manager { add find };
+allow hal_cplog_svc_default hal_extGnss_hwservice:hwservice_manager find;
+allow hal_cplog_svc_default hal_gnss_ext_default:binder call;
+allow hal_cplog_svc_default hidl_base_hwservice:hwservice_manager add;
+allow hal_cplog_svc_default hwservicemanager:binder { call transfer };
+allow hal_cplog_svc_default hwservicemanager_prop:file { read getattr map open };
+allow hal_cplog_svc_default init:unix_stream_socket connectto;
+allow hal_cplog_svc_default modem_control:unix_stream_socket { read write connectto };
+allow hal_cplog_svc_default proc_cmdline:file { read getattr open };
+allow hal_cplog_svc_default property_socket:sock_file write;
+allow hal_cplog_svc_default radio:binder call;
+allow hal_cplog_svc_default refnotify:unix_stream_socket { read write connectto };
+allow hal_cplog_svc_default slogmodem_vendor:binder call;
+allow hal_cplog_svc_default spipe_device:chr_file { read write open };
+allow hal_cplog_svc_default sysfs_wcn:dir search;
+allow hal_cplog_svc_default sysfs_wcn:file { read open };
+allow hal_cplog_svc_default tty_device:chr_file { read write open };
+allow hal_cplog_svc_default vendor_data_file:dir { read write create open add_name remove_name };
+allow hal_cplog_svc_default vendor_data_file:file { read write create getattr unlink open };
+allow hal_cplog_svc_default vendor_radio_noril_prop:file { read getattr map open };
+allow hal_cplog_svc_default vendor_radio_prop:file { read getattr map open };
+allow hal_cplog_svc_default vendor_shell_exec:file execute_no_trans;
+allow hal_cplog_svc_default vendor_sys_prop:file { read getattr map open };
+allow hal_cplog_svc_default vendor_sys_prop:property_service set;
+allow hal_cplog_svc_default wcnd:unix_stream_socket { read write connectto };

@@ -1,0 +1,18 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_log_default, domain, mlstrustedsubject;
+type hal_log_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_log_default gpsd:unix_stream_socket { read write connectto };
+allow hal_log_default hal_cplog_connmgr_default:unix_stream_socket connectto;
+allow hal_log_default hal_log_default_exec:file { read getattr map execute open entrypoint };
+allow hal_log_default hal_log_hwservice:hwservice_manager { add find };
+allow hal_log_default hidl_base_hwservice:hwservice_manager add;
+allow hal_log_default hwservicemanager:binder { call transfer };
+allow hal_log_default hwservicemanager_prop:file map;
+allow hal_log_default hwservicemanager_prop:file { read getattr open };
+allow hal_log_default slogmodem_vendor:unix_stream_socket { read write connectto };
+allow hal_log_default srtd:unix_stream_socket { read write connectto };
+allow hal_log_default wcnd:unix_stream_socket { read write connectto };

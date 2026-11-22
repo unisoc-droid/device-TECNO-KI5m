@@ -1,0 +1,17 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type adbtestmode, domain;
+type adbtestmode_exec, exec_type, file_type, vendor_file_type;
+
+allow adbtestmode adbtestmode:capability fsetid;
+allow adbtestmode adbtestmode_exec:file { read getattr map execute open entrypoint };
+allow adbtestmode block_device:dir search;
+allow adbtestmode init:unix_stream_socket connectto;
+allow adbtestmode kmsg_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow adbtestmode prod_file:dir { write create setattr open add_name search };
+allow adbtestmode prod_file:file { read write create getattr setattr open };
+allow adbtestmode property_socket:sock_file write;
+allow adbtestmode vendor_tran_prop:file { read getattr map open };
+allow adbtestmode vendor_tran_prop:property_service set;

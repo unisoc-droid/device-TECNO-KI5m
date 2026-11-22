@@ -1,0 +1,6 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+android.IRemosaicDaemon u:object_r:remosaic_daemon_service:s0
+PNPMGR  u:object_r:pnpmgr_service:s0

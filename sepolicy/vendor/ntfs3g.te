@@ -1,0 +1,6 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type ntfs3g, domain;
+type ntfs3g_exec, exec_type, file_type;

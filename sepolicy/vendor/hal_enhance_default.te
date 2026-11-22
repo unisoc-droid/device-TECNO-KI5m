@@ -1,0 +1,19 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type hal_enhance_default, domain;
+type hal_enhance_default_exec, exec_type, file_type, vendor_file_type;
+
+allow hal_enhance_default hal_enhance_default_exec:file { read getattr map execute open entrypoint };
+allow hal_enhance_default hal_enhance_hwservice:hwservice_manager { add find };
+allow hal_enhance_default hidl_base_hwservice:hwservice_manager add;
+allow hal_enhance_default hwservicemanager:binder { call transfer };
+allow hal_enhance_default hwservicemanager_prop:file { read getattr map open };
+allow hal_enhance_default mnt_vendor_file:dir search;
+allow hal_enhance_default prod_file:dir { read write create getattr open add_name search };
+allow hal_enhance_default prod_file:file { read write create getattr setattr open };
+allow hal_enhance_default sysfs:file { read write open };
+allow hal_enhance_default system_server:binder transfer;
+allow hal_enhance_default vendor_configs_file:dir { read getattr open search };
+allow hal_enhance_default vendor_configs_file:file { read getattr open };

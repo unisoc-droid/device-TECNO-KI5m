@@ -1,0 +1,12 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type antiflashing, domain;
+type antiflashing_exec, exec_type, file_type, vendor_file_type;
+
+allow antiflashing antiflashing_exec:file { read getattr map execute open entrypoint };
+allow antiflashing block_device:dir search;
+allow antiflashing mmcblk_device:blk_file { read write getattr open };
+allow antiflashing ufs_device:blk_file { read write getattr open };
+allow antiflashing vendor_product_prop:file { read getattr map open };

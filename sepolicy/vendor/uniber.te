@@ -1,0 +1,13 @@
+# Generated from stock TECNO KI5m V218 /vendor/etc/selinux.
+# _31_0 suffixes removed; entries already provided by AOSP/LineageOS
+# policy are omitted.
+
+type uniber, domain;
+type uniber_exec, exec_type, file_type, vendor_file_type;
+
+allow uniber kmsg_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow uniber proc:file { ioctl read write getattr lock append map open watch watch_reads };
+allow uniber proc_interrupts:file { ioctl read getattr lock map open watch watch_reads };
+allow uniber proc_stat:file { ioctl read getattr lock map open watch watch_reads };
+allow uniber sysfs_devices_system_cpu:file { ioctl read getattr lock map open watch watch_reads };
+allow uniber uniber_exec:file { read getattr map execute open entrypoint };

@@ -125,5 +125,8 @@ BOOT_KERNEL_MODULES := $(ki5m_first_stage_modules)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(ki5m_first_stage_modules)
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(ki5m_vendor_modules)
 
+# Vendor SEPolicy from stock V218 /vendor/etc/selinux (converted from CIL).
+BOARD_VENDOR_SEPOLICY_DIRS += device/tecno/TECNO-KI5m/sepolicy/vendor
+
 # Vendor-specific BoardConfig values (including the prebuilt vendor image path).
 -include $(KI5M_VENDOR_PATH)/BoardConfigVendor.mk
