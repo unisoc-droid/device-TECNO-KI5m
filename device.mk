@@ -15,8 +15,9 @@ else
 endif
 
 # Stock vendor properties. The stock /vendor/build.prop is build-produced, so
-# its content lives here instead of being shipped as a blob.
-PRODUCT_VENDOR_PROPERTIES += vendor/tecno/TECNO-KI5m/vendor.prop
+# its content lives here instead of being shipped as a blob. Use the file-based
+# mechanism; PRODUCT_VENDOR_PROPERTIES expects key=value, not a file path.
+TARGET_VENDOR_PROP := $(KI5M_VENDOR_PATH)/vendor.prop
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_EXTRA_VNDK_VERSIONS += 31
