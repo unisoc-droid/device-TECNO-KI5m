@@ -97,13 +97,10 @@ konfigurasi ROM KI5m.
    Simpan sebagai `.repo/local_manifests/ki5m.xml`, lalu `repo sync` untuk
    tiga path tersebut.
 
-2. Blob OEM sudah **di-track** di `vendor/tecno/TECNO-KI5m/proprietary/`
-   (351 file, ~76 MiB), mengikuti konvensi vendor tree Redmi A5 / POCO C71
-   (`serenity`). Tidak ada ekstraksi atau provisioning di server. Script
-   `extract-files.sh` tetap ada hanya untuk regenerasi/audit dari firmware
-   stock berlisensi (SHA-256
-   `fed3cf42811d3ddde84d558e1abb916e292cac4d56e8bd9beb1b69947ffb7207`).
-   Image mentah tidak di-commit dan tidak dipakai dalam build normal.
+2. Blob OEM sudah **di-track penuh** di `vendor/tecno/TECNO-KI5m/proprietary/`
+   (2088 file, 200 symlink, uid/gid/mode stock). Tidak ada ekstraksi di server.
+   10 file di Git LFS: jalankan `git lfs pull` sekali per clone. Image mentah
+   tidak di-commit dan bukan input build.
 
 3. Dari root ROM (tiga perintah standar):
 

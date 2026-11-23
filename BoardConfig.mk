@@ -65,6 +65,9 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+# No odm partition here (fstab mounts neither /odm nor /odm_dlkm); stock
+# /vendor/odm and /vendor/odm_dlkm are plain subdirectories of vendor.img.
+TARGET_COPY_OUT_ODM := vendor
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs

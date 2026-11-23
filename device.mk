@@ -14,6 +14,10 @@ else
   $(call inherit-product, $(KI5M_VENDOR_PATH)/TECNO-KI5m-vendor.mk)
 endif
 
+# Stock vendor properties. The stock /vendor/build.prop is build-produced, so
+# its content lives here instead of being shipped as a blob.
+PRODUCT_VENDOR_PROPERTIES += vendor/tecno/TECNO-KI5m/vendor.prop
+
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_EXTRA_VNDK_VERSIONS += 31
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true

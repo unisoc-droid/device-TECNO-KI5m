@@ -22,10 +22,10 @@ three. No post-checkout symlink or build-file edit is required.
 
 ## Vendor blobs
 
-`vendor/tecno/TECNO-KI5m/proprietary/` is tracked (351 files, ~76 MiB), following
-the Redmi A5 / POCO C71 (`serenity`) convention. No extraction or provisioning
-is needed after `repo sync`. The raw stock `vendor.img` is never committed and
-is not required for routine builds.
+`vendor/tecno/TECNO-KI5m/proprietary/` is tracked in full (2088 files, 200
+symlinks, stock uid/gid/mode), so no extraction or provisioning is needed after
+`repo sync`. 10 files are Git LFS — run `git lfs pull` once per clone. The raw
+stock `vendor.img` is not committed and is no longer a build input.
 
 ## Routine build (owner, dedicated server)
 
