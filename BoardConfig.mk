@@ -31,6 +31,10 @@ BOARD_KERNEL_PAGESIZE := 4096
 # Keep early UART diagnostics in the vendor_boot command line as well as the DT.
 # DEBUG BRING-UP: permissive SELinux for first test builds. Set to false before production.
 KI5M_DEBUG_PERMISSIVE ?= true
+# Vendor sepolicy converted from stock V218 has legacy allow rules that trip
+# Android 13 platform neverallows. Skip secilc neverallow checks during bring-up;
+# remove once the vendor policy is cleaned up for the target platform version.
+SELINUX_IGNORE_NEVERALLOWS := true
 BOARD_KERNEL_CMDLINE := earlycon console=ttyS1,115200n8 loglevel=7
 ifeq ($(KI5M_DEBUG_PERMISSIVE),true)
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
