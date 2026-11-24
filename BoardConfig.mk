@@ -90,12 +90,19 @@ AB_OTA_PARTITIONS := boot vendor_boot dtbo system system_ext vendor product vend
 # The local build/make rules are extended for these two groups; Option B fallback
 # only needs this block and rootdir/fstab.KI5m reverted to the merged system group.
 BOARD_AVB_ENABLE := true
-# DEBUG BRING-UP: flags 3 disables AVB verification and dm-verity hashtrees in
-# the top-level vbmeta. Set to false once the stock key/rollback contract is
-# proven; this does not change the Option A chained-vbmeta layout.
+# DEBUG BRING-UP: flags 3 disables AVB verification and dm-verity hashtrees.
+# Set to false once the stock key/rollback contract is proven; this does not
+# change the Option A chained-vbmeta layout.
 KI5M_AVB_DISABLE_VERIFICATION ?= true
 ifeq ($(KI5M_AVB_DISABLE_VERIFICATION),true)
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+# fstab.KI5m mounts system_ext/product/vendor via avb=vbmeta_<name>, so those
+# chained images are read directly. Flags on the top-level vbmeta do not
+# propagate to them; each one needs the same bring-up flag.
+BOARD_AVB_MAKE_VBMETA_SYSTEM_IMAGE_ARGS += --flags 3
+BOARD_AVB_MAKE_VBMETA_SYSTEM_EXT_IMAGE_ARGS += --flags 3
+BOARD_AVB_MAKE_VBMETA_PRODUCT_IMAGE_ARGS += --flags 3
+BOARD_AVB_MAKE_VBMETA_VENDOR_IMAGE_ARGS += --flags 3
 endif
 KI5M_AVB_CHAIN_KEY := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_SYSTEM := system
