@@ -86,8 +86,6 @@ Revisit only if the camera fails on device.
 
 ## 3. VINTF
 
-
-
 A regression was found and fixed while doing this: commit `52da421` deleted the
 `vendor/etc/vintf/manifest/` entries from `proprietary-files.txt` believing the
 `Android.bp` `prebuilt_etc_xml` modules would keep installing them. Later
