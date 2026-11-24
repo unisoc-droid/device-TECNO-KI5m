@@ -17,9 +17,8 @@ BOARD_VNDK_VERSION := current
 # a dependency in lineage.dependencies and is synced to the same path on every
 # build server.
 TARGET_KERNEL_SOURCE := kernel/tecno/TECNO-KI5m
-# Phase 1: Pure GKI kernel (gki_defconfig only)
-# Vendor drivers moved to modules in later phases
-TARGET_KERNEL_CONFIG := gki_defconfig
+# Phase 2: GKI + ki5m fragments, vendor drivers as modules
+TARGET_KERNEL_CONFIG := gki_defconfig ki5m_early.config ki5m_soc.config ki5m_device.config
 # BSP_BUILD_KI5M=y selects the in-tree KI5m DTS (ums9230-ki5m-base.dtb and
 # ums9230-ki5m-overlay.dtbo) in arch/arm64/boot/dts/sprd/Makefile. Without it
 # the kernel "dtbs" target builds no KI5m device trees.
