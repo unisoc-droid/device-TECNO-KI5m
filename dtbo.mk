@@ -1,6 +1,10 @@
 # Build dtbo.img from the in-tree KI5m overlay DTS.
 # Included by vendor/lineage/build/tasks/kernel.mk via BOARD_CUSTOM_DTBOIMG_MK.
 
+# BOARD_CUSTOM_DTBOIMG_MK skips kernel.mk's $(DTBO_OUT) rule - recreate it.
+$(DTBO_OUT):
+	mkdir -p $(DTBO_OUT)
+
 $(BOARD_PREBUILT_DTBOIMAGE): $(DTBO_OUT) $(DTC)
 	@echo "Building dtbo.img for KI5m"
 	$(hide) find $(DTBO_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name '*.dtbo' | xargs rm -f
