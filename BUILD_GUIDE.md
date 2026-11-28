@@ -59,7 +59,7 @@ sumber kernel (prebuilt vs source build), modul vendor, dan kontrak OTA.
 | `prebuilts/kernel`, `prebuilts/dtb.img`, `prebuilts/dtbo.img` | tidak ada | KI5m membangun kernel dari `kernel/tecno/TECNO-KI5m`; DTB/DTBO dibuat oleh `dtb.mk` / `dtbo.mk`. |
 | `proprietary-files.txt`, `extract-files.sh`, `setup-makefiles.sh` | ada | Vendor tree standar `extract-utils` (346 blob OEM). Blob tidak di-commit; disediakan sekali dari firmware stock berlisensi. Image prebuilt tetap sebagai fallback opsional. |
 | `Android.bp`, `Android.mk`, `rootdir/Android.{bp,mk}` | ada di vendor | `soong_namespace`, 5 `prebuilt_etc_xml`, `prebuilt_hidl_interfaces`, 19 symlink vendor. rootdir device disalin lewat `PRODUCT_COPY_FILES`. |
-| VINTF/props stock | `vendor/prebuilt/inspection/` | Metadata hasil ekstraksi sebagai bukti sumber; tidak dipakai sebagai pengganti build. |
+| VINTF/props stock | `vendor/.../inventory/inspection/` | Metadata hasil ekstraksi sebagai bukti sumber; tidak dipakai sebagai pengganti build. |
 | — | `lineage.dependencies`, `dtb.mk`, `dtbo.mk` | Standar LineageOS: roomservice mencari vendor/kernel, kernel.mk menyertakan rule DTB/DTBO. |
 
 ## 4. Fakta perangkat (ADB read-only, 22 November 2026)

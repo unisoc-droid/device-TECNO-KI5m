@@ -111,7 +111,7 @@ Remaining manifests still declare every HAL whose binary was dropped
 
 ## 4. Detector
 
-`vendor/tecno/TECNO-KI5m/tools/find-install-collisions.sh` now has two passes:
+`vendor/tecno/TECNO-KI5m/inventory/tools/find-install-collisions.sh` now has two passes:
 exact Soong `installs-*.mk` comparison, and a static Make/bp module-name pass for
 `base_rules.mk` collisions. 352 Soong collisions were fixed; of 23 static hits,
 all are modules not in this product graph (audio policy configs, cuttlefish,
