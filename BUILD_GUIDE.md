@@ -52,7 +52,7 @@ sumber kernel (prebuilt vs source build), modul vendor, dan kontrak OTA.
 
 | File generated | KI5m | Alasan |
 |---|---|---|
-| `BoardConfig.mk` | `BoardConfig.mk` | Opsi A AVB, `gki_defconfig` + `ki5m_early.config`, offset vendor_boot v4, `TARGET_USERIMAGES_USE_EXT4/F2FS`, `TARGET_RECOVERY_PIXEL_FORMAT`. |
+| `BoardConfig.mk` | `BoardConfig.mk` | Opsi A AVB, `gki_defconfig` + `ki5m_vendor_gki.config`, offset vendor_boot v4, `TARGET_USERIMAGES_USE_EXT4/F2FS`, `TARGET_RECOVERY_PIXEL_FORMAT`. |
 | `device.mk` | `device.mk` | `virtual_ab_ota/compression.mk` + paket OTA/fastbootd standar; tidak menyalin HAL boot/health generik karena vendor prebuilt menyediakannya. |
 | `lineage_<device>.mk` | `lineage_ki5m.mk` | Nama produk sengaja `lineage_ki5m` agar `lunch` pendek; `PRODUCT_SHIPPING_API_LEVEL := 31`. |
 | `rootdir/etc/fstab.KI5m` (fstab lengkap) | `rootdir/fstab.KI5m` (first-stage) | Hanya partisi logical + metadata + misc yang dipakai first-stage. `/data` dan `/cache` tidak dimount di first stage. |

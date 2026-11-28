@@ -39,9 +39,9 @@ No extra exports, manual extraction or patching is needed after provisioning.
 
 ## Configuration notes
 
-- Kernel built from source: `gki_defconfig` + `ki5m_early.config` +
-  `ki5m_soc.config` + `ki5m_device.config`; `BSP_BUILD_KI5M=y` selects the
-  in-tree KI5m DTS/DTBO, built by `dtb.mk` / `dtbo.mk`.
+- Kernel built from source: `gki_defconfig` + `ki5m_vendor_gki.config` as set
+  in `BoardConfig.mk`; `BSP_BUILD_KI5M=y` selects the in-tree KI5m DTS/DTBO,
+  built by `dtb.mk` / `dtbo.mk`.
 - AVB Option A: chained `vbmeta_system_ext` / `vbmeta_product`, vendor merged.
 - Bring-up defaults `KI5M_DEBUG_PERMISSIVE ?= true` and
   `KI5M_AVB_DISABLE_VERIFICATION ?= true`; set both to `false` for production.
